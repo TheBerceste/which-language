@@ -1,0 +1,49 @@
+PROJECT: minitodo
+VERSION: v2
+AUTHOR: Ilayda Dinçer(251478050)
+DATE: 2026-04-20
+
+========================================
+V2 UPDATES (New Requirements)
+========================================
+1. Input Validation: Task descriptions must contain at least one alphabetic character.
+2. Formatted Output: The list command now displays tasks in a structured table.
+3. Search Capability: A new command to filter tasks by keyword.
+
+========================================
+COMMANDS
+========================================
+
+--- init ---
+Usage: python solution_v2.py init
+(Same as v1: Creates .minitodo/ directory and tasks.dat file.)
+
+--- add ---
+Usage: python solution_v2.py add "<description>"
+Requirement: The <description> is validated using string methods.
+- It must not be empty. [cite: 38]
+- It must contain letters (validated via isalpha() or isalnum() checks). 
+- If invalid, prints: "Error: Task description must contain valid characters."
+
+--- list ---
+Usage: python solution_v2.py list
+Requirement: Uses string formatting to display a table. [cite: 53, 62]
+- Columns: ID (width 5, centered), Description (width 20, left-aligned), Status (width 10, centered). 
+- Uses formatting syntax like "{:^5} | {:<20} | {:^10}". [cite: 95-98]
+
+--- search ---
+Usage: python solution_v2.py search <keyword>
+Behavior: 
+- Scans tasks.dat for lines containing the <keyword>. [cite: 558-560]
+- The search is case-insensitive (converts strings to lower() before comparing). [cite: 34-35]
+- If no matches, prints: "No tasks matching '<keyword>' found."
+
+--- done ---
+Usage: python solution_v2.py done <id>
+(Same as v1: Marks task as DONE.)
+
+========================================
+ERROR HANDLING
+========================================
+- Missing arguments: Prints usage instructions. [cite: 611-613]
+- Invalid ID: If user enters a non-digit ID for 'done', prints error. [cite: 16]
